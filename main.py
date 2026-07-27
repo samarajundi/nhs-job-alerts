@@ -31,11 +31,18 @@ def save_seen_jobs(jobs):
 
 
 def get_page(url):
-    response = requests.get(
+
+    session = requests.Session()
+
+    session.headers.update({
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/150 Safari/537.36",
+        "X-Requested-With": "XMLHttpRequest",
+        "Accept": "*/*",
+        "Referer": "https://apply.jobs.scot.nhs.uk/Home/Job"
+    })
+
+    response = session.get(
         url,
-        headers={
-            "User-Agent": "Mozilla/5.0"
-        },
         timeout=30
     )
 
