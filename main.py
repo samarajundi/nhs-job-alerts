@@ -50,6 +50,9 @@ def get_page(url):
 def find_job_links():
 
     soup = get_page(LISTING_URL)
+    
+        print("JOB CARD TEST:", "job-card" in str(soup))
+    print("JOB DETAIL TEST:", "JobDetail" in str(soup))
 
     print("Downloaded page length:", len(str(soup)))
 
