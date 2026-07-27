@@ -51,22 +51,30 @@ def find_job_links():
 
     soup = get_page(LISTING_URL)
 
+    print("Downloaded page length:", len(str(soup)))
+
+    cards = soup.select("div.job-card")
+
+    print("Found job cards:", len(cards))
+
     links = []
 
-    for a in soup.find_all("a", href=True):
+    for card in cards:
 
-        href = a["href"]
+        a = card.select_one("a[href*='JobDetail']")
 
-        if "JobDetail" in href:
+        if a:
+
+            href = a["href"]
 
             if href.startswith("/"):
                 href = BASE_URL + href
 
-            if href not in links:
-                links.append(href)
+            links.append(href)
+
+    print("Collected links:", len(links))
 
     return links
-
 
 def extract_job(url):
 
