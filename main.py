@@ -41,10 +41,12 @@ def get_page(url):
 
     response.raise_for_status()
 
-    return BeautifulSoup(
-        response.text,
-        "lxml"
-    )
+print(response.text[:500])
+
+return BeautifulSoup(
+    response.text,
+    "lxml"
+)
 
 
 def find_job_links():
