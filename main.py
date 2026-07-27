@@ -14,7 +14,7 @@ SEEN_FILE = "jobs_seen.json"
 BASE_URL = "https://apply.jobs.scot.nhs.uk"
 
 LISTING_URL = (
-    "https://apply.jobs.scot.nhs.uk/Home/Job"
+    "https://apply.jobs.scot.nhs.uk/Home/_JobCard?Skip=0&what=Assistant%20Psychologist&Miles=&Salary=&LocationId=&Regions=&DivisionIds=&ClientCategory=&Departments=&SchoolLocationId=&JobLevels=&SchoolSubjectId=&JobTypeIds=&lat=&long=&EmploymentType=&postedDate="
 )
 
 
@@ -54,7 +54,7 @@ def find_job_links():
     print("JOB CARD TEST:", "job-card" in str(soup))
     print("JOB DETAIL TEST:", "JobDetail" in str(soup))
 
-    cards = soup.select("div.job-card")
+    cards = soup.select(".job-card")
 
     print("Found job cards:", len(cards))
 
