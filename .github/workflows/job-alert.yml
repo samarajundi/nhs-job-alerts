@@ -1,17 +1,15 @@
 name: NHS Job Alerts
 
-"on":
+on:
+  workflow_dispatch:
   schedule:
     - cron: "0 8 * * *"
-  workflow_dispatch:
 
 jobs:
   search-jobs:
-
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
